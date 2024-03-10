@@ -1,0 +1,288 @@
+\documentclass[a4paper]{article}
+    \usepackage{hyperref}
+    \usepackage{fullpage}
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{textcomp}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \textheight=5in
+    \pagestyle{empty}
+    \raggedright
+    \usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.5in]{geometry}
+\usepackage{etoolbox,refcount}
+\usepackage{multicol}
+
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+  \stepcounter{nextitemizecount}%
+  \setcounter{countitems}{0}%
+  \preto\item{\stepcounter{countitems}}%
+}
+\makeatletter
+\newcommand{\computecountitems}{%
+  \edef\@currentlabel{\number\c@countitems}%
+  \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\newcommand{\nextitemizecount}{%
+  \getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother    
+\newenvironment{AutoMultiColItemize}{%
+\ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+\setupcountitems\begin{itemize}}%
+{\end{itemize}%
+\unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
+
+
+    %\renewcommand{\encodingdefault}{cg}
+%\renewcommand{\rmdefault}{lgrcmr}
+
+\def\bull{\vrule height 0.7ex width .7ex depth -.1ex }
+
+% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+    pdftitle={Chitransh's Resume},
+    pdfpagemode=FullScreen,
+    }
+
+\newcommand{\area} [2] {
+    \vspace*{-9pt}
+    \begin{verse}
+        \textbf{#1}   #2 
+    \end{verse}
+}
+
+\newcommand{\lineunder} {
+    \vspace*{-8pt} \\
+    \hspace*{-18pt} \hrulefill \\
+}
+
+\newcommand{\header} [1] {
+    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+    \vspace*{-6pt} \lineunder
+}
+
+\newcommand{\employer} [3] {
+    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+}
+
+\newcommand{\contact} [3] {
+    \vspace*{-10pt}
+    \begin{center}
+        {\Huge \scshape {#1}}\\
+        #2 \\ #3
+    \end{center}
+    \vspace*{-8pt}
+}
+
+\newenvironment{achievements}{
+    \begin{list}
+        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+    \end{list}
+}
+
+\newcommand{\schoolwithcourses} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+    \vspace*{5pt}
+}
+
+\newcommand{\school} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+}
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+\vspace*{-40pt}
+
+    
+
+%==== Profile ====%
+\vspace*{-9pt}
+\begin{center}
+	{\Huge \scshape {Chitransh Kulshrestha}}\\
+	\vspace{2mm}
+	India $\cdot$ chitransh.k2003@gmail.com $\cdot$ +91 6264234676 $\cdot$ \href{https://github.com/chitranshk1301}{GitHub} $\cdot$ \href{https://www.linkedin.com/in/chitransh-kulshrestha-00158a204//}{Linkedin} \\
+\end{center}
+\vspace{-1mm}
+% \header{Objective}
+% Dedicated, goal-oriented, and team-oriented individual who seeks an opportunity to work in the field of Web development\\
+% \vspace{2mm}
+%==== Education ====%
+\header{Education}
+\vspace{0mm}
+\textbf{Indian Institute of Information Technology}\hfill Bhopal\\
+BTech Information Technology \hfill December 2021 - Present\\
+\vspace{1mm}
+% \textbf{Relevant Coursework}
+% \vspace{-2.5mm}
+%  \begin{multicols}{2}
+%     \begin{itemize}
+%         \item Analysis of Algorithms
+%          \vspace{-2.5mm}
+%         \item Database Management System 
+%          \vspace{-2.5mm}
+%         \item Discrete Structures 
+%          \vspace{-2.5mm}
+%         \item Object Oriented Programming
+%          \vspace{-2.5mm}
+        
+%     \end{itemize}
+%     \end{multicols}
+    
+%     \vspace{-2mm}
+    
+\header{Professional Experience}
+
+{\textbf{Stellarbyte }}\hfill August 2023 - October 2023 \\
+ {\textit{Frontend development Intern }}  \
+\vspace{-2.5mm}
+\begin{itemize} 
+\item Led end-to-end development of multiple projects using Reactjs, Nextjs and TailwindCSS, showcasing expertise in building efficient web applications from scratch.
+\vspace{-2mm}
+\item Created a comprehensive design system using Storybook, enhancing design consistency and accelerating project deployment, resulting in improved efficiency.
+\item Optimized frontend for a chatbot with ChatGPT-like chat features using Styled Components and Tailwind CSS, delivering an engaging and visually appealing user interface.
+\vspace{-2mm} 
+\end{itemize}
+
+{\textbf{HUBX }}\hfill July 2023 - August 2023 \\
+ {\textit{Full stack web development Intern }}  \
+\vspace{-2.5mm}
+\begin{itemize} 
+\item Developed and maintained a Next.js-based ecommerce platform, utilizing Prisma and Postgres for robust database management.
+\vspace{-2mm}
+\item Integrated a secure payment gateway, ensuring smooth and safe transaction processing.
+\item Collaborated effectively with a cross-functional team, following Agile methodologies to deliver high-quality features on schedule.
+\vspace{-2mm} 
+\end{itemize}
+
+{\textbf{Patilkaki }}\hfill December 2022 - January 2023 \\
+ {\textit{Frontend development Intern }}  \
+\vspace{-2.5mm}
+\begin{itemize} 
+\item Oversee front-end development using ReactJs to maintain application integrity with the backend and its efficiency.
+\vspace{-2mm}
+\item Utilize technologies such as Javascript, MaterialUI \& UIzard to
+create UIs,
+improved codebase quality and increased stability.
+\vspace{-2mm}
+\item Created pixel perfect frontend in ReactJs from the UIs. 
+\end{itemize}
+    
+    \header{Projects}
+
+{\textbf{Users Management}} \hfill
+\vspace{-1mm}
+% link to the project
+\url{https://github.com/chitranshk1301/users-crud-mern}
+\vspace{-1mm}
+\begin{itemize} 
+% 	add description for pet adoption system app.
+    \item Developed a user management system with CRUD operations using MERN stack, enhanced with data visualization using Chart.js.
+    \item Built a MERN-based solution for user management, featuring CRUD capabilities and data visualization through Chart.js.
+    \item Implemented user management with MERN stack, enabling CRUD operations and integrating Chart.js for intuitive data representation.
+    
+\end{itemize}
+
+{\textbf{Changelog-api}} \hfill
+\vspace{-1mm}
+% link to the project
+\url{https://github.com/chitranshk1301/changelog-api}
+\vspace{-1mm}
+\begin{itemize} 
+% 	add description for pet adoption system app.
+    \item Created a \textbf{RESTful} API for logging different versions of your software.
+    \item API includes CRUD operations on signin (with JWT auth), products and their updates.
+    
+\end{itemize}
+
+{\textbf{PicNest}} \hfill
+\vspace{-1mm}
+% link to the project
+\url{https://github.com/chitranshk1301/mern_image_crud}
+\vspace{-1mm}
+\begin{itemize}
+    \item Developed a MERN project with secure user authentication, Cloudinary for image uploads, and a polished UI using Tailwind CSS. Users can create posts, and visibility is restricted to logged-in users.
+    \vspace{-2mm}
+    \item Built a simple and secure MERN app allowing users to upload and share images. Utilized Cloudinary for image management and enhanced the UI with Tailwind CSS.
+\end{itemize}
+
+{\textbf{ToDo's list using flask}} \hfill
+\vspace{-1mm}
+% link to the project
+\url{https://github.com/chitranshk1301/todo-list-flask-based}
+\vspace{-1mm}
+\begin{itemize} 
+% 	add description for pet adoption system app.
+    \item Created todo's list (CRUD), frontend and backend, using flask (python based web framework) and SQL.
+    \item Containerized it using \textbf{docker}.
+    
+\end{itemize}
+
+% {\textbf{Pet adoption system}} \hfill
+% \vspace{-1mm}
+% % link to the project
+% \url{http://pet-adoption-website.vercel.app/}
+% \vspace{-1mm}
+% \begin{itemize} 
+% % 	add description for pet adoption system app.
+%     \item Created a website for pet adoption using \textbf{ReactJs}.
+%     \item Used an API to fetch information about pets available for adoption in a particular city.
+    
+% \end{itemize}
+
+% {\textbf{Anime website}} \hfill
+% \vspace{-1mm}
+% % link to the project
+% \url{http://anime-recommender-website.vercel.app/}
+% \vspace{-1mm}
+% \begin{itemize}
+%     \item Created a website to search for an anime and animes related to it.
+%     \vspace{-2mm}
+%     \item Used a public API for anime data (\textbf{JIKAN API})
+%     \item Created using \textbf{ReactJs and axios}
+% \end{itemize}
+
+    \header{Skills}
+\vspace{2mm}
+\begin{tabular}{ l l }
+	Programming Languages: & C++ ,Python  \\
+	\vspace{1mm}
+	Tools:  & GitHub, Git, Latex, Postman \\
+	Database Management Systems: & MySQL, PostgreSQL  \\ 
+	Web Development:       & HTML , CSS (Bootstrap, Tailwind and Material UI) , JavaScript. Typescript   \\
+	Libraries / Frameworks: & ReactJs , NodeJs , FastAPI, MongoDb, Prisma, ExpressJs        \\
+	Soft Skills:           &  Leadership, Communication Skills, Organised , Quick learner  \\
+	
+\end{tabular}
+\vspace{2mm}
+ 
+ % \header{Position of Responsibility }
+ % \vspace{0mm}
+
+ % \textbf{GNU/Linux Users Club} \hfill IIIT Bhopal \\
+ % \textit{Core team member} \hfill August 2022 - Present\\
+ % \vspace{-2.5mm}
+ % \begin{itemize} \itemsep 1pt
+ % 	\item Using Arch Linux as my main distribution but I also have experienced most Debian Based( Ubuntu), Fedora and Arch based Distributions
+ % 		\item Guiding batch mates to install and use Linux distributions comfortably as well as troubleshooting problems for them.
+ % 		    \item Working as a \textbf{Web developer}.
+ % \end{itemize}
+
+\vspace{2mm}
+\header{Achievements}
+\textbf{Runner Up} \hfill GDSC IIIT Bhopal\\
+Bagged second prize in Intra IIIT development contest conducted by GDSC IIIT Bhopal for creating a password manager.  
+{\textit {Skills Used: Python, MySQl, Encryption Methods (MD5Sum)}}  \hfill 2022\\
+\end{document}
